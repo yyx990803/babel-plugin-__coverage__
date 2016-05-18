@@ -161,6 +161,16 @@ module.exports = function ({ types: t }) {
     if (node.__coverage__instrumented) return
     node.__coverage__instrumented = true
 
+    // variable declaration is not instrumentable in certain positions
+    if (path.isVariableDeclaration() && (
+      path.parentPath.isForStatement() ||
+      path.parentPath.isForOfStatement() ||
+      path.parentPath.isForInStatement() ||
+      path.parentPath.isExportNamedDeclaration()
+    )) {
+      return
+    }
+
     const id = nextStatementId(context, node.loc)
     instrument(path, increase(context, 's', id))
   }
@@ -192,13 +202,6 @@ module.exports = function ({ types: t }) {
   //
   function coverStatement (path) {
     instrumentStatement(this, path)
-  }
-
-  //
-  // `var x = 1` => `var x = (++coverage, 1)`
-  //
-  function coverVariableDeclarator (path) {
-    instrumentStatement(this, path.get('init'))
   }
 
   //
@@ -366,7 +369,7 @@ module.exports = function ({ types: t }) {
       ReturnStatement: coverWith(() => coverStatement),
       ThrowStatement: coverWith(() => coverStatement),
       TryStatement: coverWith(() => coverStatement),
-      VariableDeclarator: coverWith(() => coverVariableDeclarator),
+      VariableDeclaration: coverWith(() => coverStatement),
       IfStatement: coverWith(() => coverIfStatement),
       ForStatement: coverWith(() => coverForStatement),
       ForInStatement: coverWith(() => coverLoopStatement),
@@ -381,7 +384,6 @@ module.exports = function ({ types: t }) {
       ConditionalExpression: coverWith(() => coverConditionalExpression),
       LogicalExpression: coverWith(() => coverLogicalExpression),
       AssignmentPattern: coverWith(() => coverAssignmentPattern),
-      ExportDefaultDeclaration: coverWith(() => coverStatement),
 
       Program: {
         enter (path, state) {

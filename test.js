@@ -20,8 +20,8 @@ describe('test', function () {
     describe('variable declartions', function () {
       testStatementCoverage('const x = 0', 1)
       testStatementCoverage('let x = 0', 1)
-      testStatementCoverage('var x = 1, y = 2', 2)
-      testStatementCoverage('var x', 0)
+      testStatementCoverage('var x = 1, y = 2', 1)
+      testStatementCoverage('var x', 1)
     })
 
     describe('import declarations', function () {
@@ -30,8 +30,8 @@ describe('test', function () {
 
     describe('export declarations', function () {
       testStatementCoverage('export { keys } from \'lodash\'', 0)
-      testStatementCoverage('export const x = 10 * 10', 1)
-      testStatementCoverage('export default 10 * 10', 1)
+      testStatementCoverage('export const x = 10 * 10', 0)
+      testStatementCoverage('export default 10 * 10', 0)
     })
 
     describe('arrow functions', function () {
