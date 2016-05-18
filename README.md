@@ -1,8 +1,7 @@
 
 # babel-plugin-coverage
 
-[![npm version](https://badge.fury.io/js/babel-plugin-coverage.svg)](https://badge.fury.io/js/babel-plugin-coverage)
-![MIT Licensed](https://img.shields.io/badge/license-MIT%20License-blue.svg)
+[![npm version](https://img.shields.io/npm/v/babel-plugin-coverage.svg)](https://www.npmjs.com/package/babel-plugin-coverage) [![CircleCI](https://img.shields.io/circleci/project/yyx990803/babel-plugin-coverage.svg?maxAge=2592000)](https://circleci.com/gh/yyx990803/babel-plugin-coverage) [![Coverage](https://img.shields.io/codecov/c/github/yyx990803/babel-plugin-coverage.svg)](https://codecov.io/github/yyx990803/babel-plugin-coverage) ![MIT Licensed](https://img.shields.io/npm/l/babel-plugin-coverage.svg)
 
 ## Note
 
