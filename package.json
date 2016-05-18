@@ -1,6 +1,6 @@
 {
-  "name": "babel-plugin-__coverage__",
-  "version": "0.111111.11",
+  "name": "babel-plugin-coverage",
+  "version": "1.0.0",
   "description": "Babel 6.x plugin to add instrument code with Istanbul-compatible `__coverage__` variable.",
   "main": "lib/index.js",
   "scripts": {
@@ -15,6 +15,9 @@
     "test": "npm run mocha"
   },
   "author": "Thai Pangsakulyanont <org.yi.dttvb@gmail.com> (http://dt.in.th/)",
+  "contributors": [
+    "Evan You <yyx990803@gmail.com>"
+  ],
   "license": "MIT",
   "files": [
     "lib"
@@ -47,7 +50,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dtinth/babel-plugin-__coverage__.git"
+    "url": "git+https://github.com/yyx990803/babel-plugin-coverage.git"
   },
   "keywords": [
     "babel",
@@ -58,7 +61,7 @@
     "unit"
   ],
   "bugs": {
-    "url": "https://github.com/dtinth/babel-plugin-__coverage__/issues"
+    "url": "https://github.com/yyx990803/babel-plugin-coverage/issues"
   },
-  "homepage": "https://github.com/dtinth/babel-plugin-__coverage__#readme"
+  "homepage": "https://github.com/yyx990803/babel-plugin-coverage#readme"
 }
