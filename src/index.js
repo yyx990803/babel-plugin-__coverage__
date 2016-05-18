@@ -372,12 +372,9 @@ module.exports = function ({ types: t }) {
   }
 
   //
-  // `a ? b : c` => `a ? (++coverage, b) : (++coverage, c)`.
-  // Also adds branch coverage.
+  // Adds branch coverage for conditional expressions.
   //
   function coverConditionalExpression (path) {
-    instrumentStatement(this, path.get('consequent'))
-    instrumentStatement(this, path.get('alternate'))
     if (path.node.loc) {
       const node = path.node
       const loc1 = node.consequent.loc || node.loc
@@ -389,10 +386,9 @@ module.exports = function ({ types: t }) {
   }
 
   //
-  // Adds branch coverage.
+  // Adds branch coverage for logical expressions.
   //
   function coverLogicalExpression (path) {
-    instrumentStatement(this, path.get('right'))
     if (!path.node.loc) return
     const node = path.node
     const loc1 = node.left.loc || node.loc
